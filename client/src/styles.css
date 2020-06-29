@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background: #660b0b;
+}
+.form-signin {
+    min-width: 400px;
+    display: inline-block;
+}
+.nav-section{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.nav-item i{
+    margin-right: 7px !important;
+}
+.bg-dark{
+    background-color: #343a40 !important;
+}
