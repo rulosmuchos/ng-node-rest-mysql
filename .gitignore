@@ -1,0 +1,16 @@
+server/static/favicon.ico
+server/static/index.html
+server/static/main.js
+server/static/main.js.map
+server/static/polyfills-es5.js
+server/static/polyfills-es5.js.map
+server/static/polyfills.js
+server/static/polyfills.js.map
+server/static/runtime.js
+server/static/runtime.js.map
+server/static/styles.js
+server/static/styles.js.map
+server/static/vendor.js
+server/static/vendor.js.map
+server/static/assets/icon.png
+server/static/assets/noimage.png

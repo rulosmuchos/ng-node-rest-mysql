@@ -12,12 +12,12 @@ class UsersRoutes {
     }
 
     config() {
-        this.router.get('/', usersController.list);
+        // this.router.get('/', usersController.list);
         // this.router.get('/profile', verifyToken, usersController.findOne);
-        this.router.post('/signin',usersController.signin)
-        this.router.post('/', usersController.create);
-        this.router.put('/:id', usersController.update);
-        this.router.delete('/:id', usersController.delete);
+        this.router.post('/signin', verifyToken,usersController.signin)
+        this.router.post('/', verifyToken, usersController.create);
+        this.router.put('/:id', verifyToken, usersController.update);
+        this.router.delete('/:id', verifyToken, usersController.delete);
     }
 
 }
