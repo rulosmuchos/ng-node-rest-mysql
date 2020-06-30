@@ -2,8 +2,8 @@ import { Router } from 'express';
 import  multer  from "multer";
 import { uploadController } from '../controllers/uploadController';
 
-const ROOT_PATH = "/home/andi/avellanedaCompras/server/"
-const URL_PATH = "http://181.164.195.167:8002/"
+const ROOT_PATH = "/home/app/v1/ng-node-rest-mysql/server/"
+const URL_PATH = "https://app.avellanedacompras.com/"
 const UP_REL_PATH = "public/"
 const UPLOAD_PATH = ROOT_PATH+UP_REL_PATH;
 class UploadRoutes {

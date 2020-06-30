@@ -2,8 +2,8 @@ export default {
 
     database: {
         host: 'localhost',
-        user: 'node_user',
-        password: '1234',
+        user: 'root',
+        password: 'T0daraba1234Mashiaj770770',
         database: 'ng_products'
     }
 

@@ -90,7 +90,7 @@ export class ProductsFormComponent implements OnInit {
     let input = new FormData();
     // Add your values in here
     input.append('file', this.selectedFile);
-    this.http.post('http://app.avellanedacompras.com:8002/upload', input, {
+    this.http.post('https://app.avellanedacompras.com/upload', input, {
       reportProgress: true,
       observe: 'events'}).subscribe((event: HttpEvent<any>) => {
         switch (event.type) {

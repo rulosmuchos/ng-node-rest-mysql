@@ -27,12 +27,13 @@ class Server {
     constructor() {
         this.app = express();
         this.app.use('/',express.static('static'));
+        this.app.use('/public',express.static('public'));
         this.config();
         this.routes();
     }
 
     config(): void {
-        this.app.set('port', process.env.PORT || 8002);
+        this.app.set('port', process.env.PORT || 80);
         this.app.use(morgan('dev'));
         this.app.use(cors());
         this.app.use(express.json());
@@ -50,7 +51,7 @@ class Server {
         this.app.listen(this.app.get('port'), () => {
             console.log('HTTP Express server listening on port', this.app.get('port'));
         });
-        var port = this.app.get('port') + 1;
+        var port = 443; //this.app.get('port') + 1;
         var server = https.createServer(this.options, this.app).listen(port, function(){
             console.log("HTTPS Express server listening on port" , port);
           });
