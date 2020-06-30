@@ -41,8 +41,8 @@
     WantedBy=multi-user.target
 :wq ( --write-- --quit--)
 
-systemctl enable app-node_server.service
+> systemctl enable app-node_server.service
 
 # start server
 
-systemctl start app-node_server.service
+> systemctl start app-node_server.service
