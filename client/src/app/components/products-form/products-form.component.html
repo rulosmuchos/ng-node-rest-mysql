@@ -1,7 +1,29 @@
+<div class=container>
+  <div class="row text-center pb-3">  
+    <div class="col">
+      <div class="card">
+        <input style="display: none;" type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" id="image" name="image" #fileInput>
+        <img class="w-100" [src]="product.image == '' ? '/assets/noimage.png' : product.image" name="image" (click)="fileInput.click()">
+      </div>  
+    </div>  
+    <div class="col">
+      <div class="card">
+        <input style="display: none;" type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" id="image" name="image" #fileInput2>  
+        <img class="w-100" [src]="product.image2 == '' ? '/assets/noimage.png' : product.image2" name="image2" (click)="fileInput2.click()">
+      </div>  
+    </div>  
+    <div class="col">
+      <div class="card">  
+        <input style="display: none;" type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" id="image" name="image" #fileInput3>  
+        <img class="w-100" [src]="product.image3 == '' ? '/assets/noimage.png' : product.image3" name="image3" (click)="fileInput3.click()">
+      </div>  
+    </div>  
+  </div>  
+</div>
 <div class="col-12 row-5">
-  <div class="card text-white bg-danger mb-3">    
+  <div class="card  bg-secondary mb-3">    
     <div class="card-header">
-      <h4 class="text-white mt-0 mb-0">ADD NEW PRODUCT</h4>
+      <h4 class=" mt-0 mb-0">ADD NEW PRODUCT</h4>
     </div>
     <div class="card-body">
       <form action="">
@@ -14,55 +36,15 @@
         <div class="form-group">
           <input type="text" name="Price" [(ngModel)]="product.price" placeholder="Price" class="form-control" autofocus>
         </div>
-        <!-- <div class="form-group">
-          <input type="text" name="Whats App" [(ngModel)]="product.whapp" placeholder="Whats App" class="form-control">
-        </div> -->
-        <div class="pb-3">
-          <form>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" name="image" #fileInput>
-              <label class="custom-file-label" for="customFile" >Image 1</label>
-            </div>
-          </form>
-        </div>
-        <div class="pb-3">
-          <form>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" name="image2" #fileInput>
-              <label class="custom-file-label" for="customFile" >Image 2</label>
-            </div>
-          </form>
-        </div>
-        <div class="pb-3">
-          <form>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" name="image3" #fileInput>
-              <label class="custom-file-label" for="customFile" >Image 3</label>
-            </div>
-          </form>
-        </div>
         <!-- Progress Bar -->
         <div class="pb-3" *ngIf="progress>0"> 
           <ngb-progressbar class="progress-bar-striped" type="primary" [animated]="true" [striped]="true"  [value]="progress"></ngb-progressbar>
         </div>
-        <button class="btn btn-block btn-primary" (click)="edit ? updateProduct() : saveNewProduct()">
+        <button class="btn btn-block btn-success" (click)="edit ? updateProduct() : saveNewProduct()">
           Save
         </button>
       </form>
     </div>
-  </div>
-</div>
-
-<div class="col-12 row-8 pb-3">
-  <div class="card card-body text-center">
-    <h3>{{product.title == '' ? 'Product Title' : product.title}}</h3>
-    <p>{{product.description == '' ? 'Write your Descrition' : product.description}}</p>
-    <!-- <img [src]="product.image == '' ? '/assets/noimage.png' : product.image" alt="No Image" class="card-img-top">
-    <img [src]="product.image2 == '' ? '/assets/noimage.png' : product.image2" alt="No Image" class="card-img-top">
-    <img [src]="product.image3 == '' ? '/assets/noimage.png' : product.image3" alt="No Image" class="card-img-top"> -->
-    <p>{{product.created_at | date: 'yyyy-MM-dd'}}</p>
-    <!-- <p><i class="fab fa-whatsapp"></i>{{product.whapp == '' ? '$?' : product.whapp}}</p> -->
-    <p>${{product.price == '' ? '?' : product.price}}</p>
   </div>
 </div>
 <!-- <div class="col-6 row-8">
@@ -117,24 +99,3 @@
     <p>${{product.price == '' ? '?' : product.price}}</p>
   </div>
 </div> -->
-<div class='container-fluid col-12 pb-3'>   
-  <div class=''>  
-    <ngb-carousel class="">  
-      <ng-template ngbSlide *ngIf="product.image">  
-        <img style="height: auto;width: 100%; display: block;" [src]="product.image == '' ? '/assets/noimage.png' : product.image"s>  
-        <div class="carousel-caption">  
-        </div>  
-      </ng-template>  
-      <ng-template ngbSlide *ngIf="product.image2">  
-        <img style="height: auto;width: 100%; display: block;" [src]="product.image2 == '' ? '/assets/noimage.png' : product.image2"s>  
-        <div class="carousel-caption">  
-        </div>  
-      </ng-template>  
-      <ng-template ngbSlide *ngIf="product.image3">  
-        <img style="height: auto;width: 100%; display: block;" [src]="product.image3 == '' ? '/assets/noimage.png' : product.image3"s>  
-        <div class="carousel-caption">  
-        </div>  
-      </ng-template>  
-    </ngb-carousel>  
-  </div>  
-</div>

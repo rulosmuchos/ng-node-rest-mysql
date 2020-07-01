@@ -1,8 +1,8 @@
 <div class="album col-md-4" *ngFor="let product of products">
-  <div class="card bg-danger mb-3">
+  <div class="card bg-secondary mb-3">
     <div class="card-header">
-      <h4 class="text-white mt-0 mb-0">{{product.title}}</h4>
-      <h6 class="text-white mt-0 mb-0">{{product.description == ''?'Description':product.description}}</h6>
+      <h4 class=" mt-0 mb-0">{{product.title}}</h4>
+      <h6 class=" mt-0 mb-0">{{product.description == ''?'Description':product.description}}</h6>
     </div>
     <div class="card bg-transparent p-4" style="overflow: hidden; max-height: 250px; width: 100%;border:1px">
       <div class="card">
@@ -10,12 +10,12 @@
       </div>
     </div>
     <div class="card-body">
-      <h3 class="text-white">${{product.price}}</h3>
+      <h3 class="">${{product.price}}</h3>
       <!-- <p><i class="fab fa-whatsapp"></i>{{product.whapp}}</p> -->
       <a [routerLink]="['/products/edit', product.id]" class="btn btn-primary btn-block">
         EDIT PRODUCT
       </a>
-      <button class="btn bg-white btn-outline-danger btn-block" (click)="deleteGame(product.id)">delete<i class="ml-1 far fa-trash-alt"></i>
+      <button class="btn btn-danger btn-block" (click)="deleteGame(product.id)">delete<i class="ml-1 far fa-trash-alt"></i>
       </button>
     </div>
   </div>
