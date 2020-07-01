@@ -28,6 +28,7 @@ class Server {
         this.app = express();
         this.app.use('/',express.static('static'));
         // this.app.use('*',express.static('static'));
+        this.app.use('*',express.static('static'));
         this.app.use('/public',express.static('public'));
         this.config();
         this.routes();
