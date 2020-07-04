@@ -1,6 +1,14 @@
 # Avellaneda Compras Product manager web app
 ## ng-node-rest-mysql
 
+### Prequisites:
+    - node.js
+        debian ```sudo apt-get install nodejs```
+        mac ```brew install node```
+    
+    - @angular/cli
+        ```npm install -g @angular/cli```
+
 ### installation process
 ``` mkdir /home/app/v1/```
 ``` cd /home/app/v1/```
