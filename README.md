@@ -2,13 +2,14 @@
 ## ng-node-rest-mysql
 
 ### Prequisites:
+
 > node.js
 
-    debian 
+debian 
 
 ```sudo apt-get install nodejs```
 
-    mac
+mac
 
 ```brew install node```
     
@@ -17,6 +18,7 @@
 ```npm install -g @angular/cli```
 
 ### installation process
+
 ``` mkdir /home/app/v1/```
 
 ``` cd /home/app/v1/```
@@ -32,6 +34,7 @@
 ``` npm run build```
 
 ### server ng_modules download and server build to /server/build/
+
 ``` cd /home/app/v1/```
 
 ``` cd ng-node-rest-mysql/server/src```
@@ -41,6 +44,7 @@
 ``` npm run build```
 
 ### symb link client build and server static-files folder
+
 ``` cd /home/app/v1/```
 
 ``` cd ng-node-rest-mysql/server/src```
