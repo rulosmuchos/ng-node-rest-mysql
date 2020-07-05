@@ -3,21 +3,22 @@
 
 ### Prequisites:
     - node.js
-        debian ```sudo apt-get install nodejs```
+        debian 
+```sudo apt-get install nodejs```
         mac ```brew install node```
     
     - @angular/cli
-        ```npm install -g @angular/cli```
+```npm install -g @angular/cli```
 
 ### installation process
-    ``` mkdir /home/app/v1/```
-    ``` cd /home/app/v1/```
-    ``` git clone https://github.com/rulosmuchos/ng-node-rest-mysql.git```
+``` mkdir /home/app/v1/```
+``` cd /home/app/v1/```
+``` git clone https://github.com/rulosmuchos/ng-node-rest-mysql.git```
 
 ### client ng_modules download and client build to /client/dist/client/
-    ``` cd ng-node-rest-mysql/client```
-    ``` npm install```
-    ``` npm run build```
+``` cd ng-node-rest-mysql/client```
+``` npm install```
+``` npm run build```
 
 ### server ng_modules download and server build to /server/build/
     ``` cd /home/app/v1/```
