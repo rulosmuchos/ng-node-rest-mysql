@@ -13,7 +13,7 @@ mac
 
 ```brew install node```
     
-> - @angular/cli
+> @angular/cli
 
 ```npm install -g @angular/cli```
 
