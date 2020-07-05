@@ -13,7 +13,9 @@
 
 ### installation process
 ``` mkdir /home/app/v1/```
+
 ``` cd /home/app/v1/```
+
 ``` git clone https://github.com/rulosmuchos/ng-node-rest-mysql.git```
 
 ### client ng_modules download and client build to /client/dist/client/
@@ -23,17 +25,24 @@
 
 ### server ng_modules download and server build to /server/build/
 ``` cd /home/app/v1/```
+
 ``` cd ng-node-rest-mysql/server/src```
+
 ``` npm install```
+
 ``` npm run build```
 
 ### symb link client build and server static-files folder
 ``` cd /home/app/v1/```
+
 ``` cd ng-node-rest-mysql/server/src```
+
 ``` ln -s /home/app/v1/ng-node-rest-mysql/client/dist/client static```
 
 ### install server as a system service
+
 ```cd /etc/systemd/system```
+
 ```vi app-node_server.service```
 
 ```i --insert--```
