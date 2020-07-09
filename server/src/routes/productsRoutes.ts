@@ -18,7 +18,7 @@ class ProductsRoutes {
         this.router.get('/:id', productsController.getOne);
         this.router.post('/',verifyToken, productsController.create);
         this.router.put('/:id', productsController.update);
-        this.router.delete('/:id', productsController.delete);
+        this.router.delete('/:id', productsController.trash);
     }
 
 }

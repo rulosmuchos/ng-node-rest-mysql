@@ -24,8 +24,8 @@ export class ProductService {
     return this.http.delete(`${this.API_URI}/products/${id}`);
   }
 
-  saveProduct(game: Product) {
-    return this.http.post(`${this.API_URI}/products`, game);
+  saveProduct(product: Product) {
+    return this.http.post(`${this.API_URI}/products`, product);
   }
 
   updateProduct(id: string|number, updatedProduct: Product): Observable<Product> {

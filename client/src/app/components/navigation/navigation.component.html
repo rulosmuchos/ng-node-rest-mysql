@@ -5,7 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav nav-section">
+    <ul class="navbar-nav nav-section" *ngIf="authService.loggedIn();">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/products" routerLinkActive="active"><i class="fas fa-tshirt"></i> Productos</a>
       </li>

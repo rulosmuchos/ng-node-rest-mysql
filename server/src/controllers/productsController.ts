@@ -8,7 +8,7 @@ class ProductsController {
 
     public async list(req: any, res: Response): Promise<void> {
         
-        const products = await pool.query('SELECT * FROM products WHERE createdby = ?',[req.payload._id]);
+        const products = await pool.query('SELECT * FROM products WHERE createdby = ? ORDER BY created_at DESC',[req.payload._id]);
         res.json(products);
     }
 
@@ -42,6 +42,11 @@ class ProductsController {
         const { id } = req.params;
         await pool.query('DELETE FROM products WHERE id = ?', [id]);
         res.json({ message: "The product was deleted" });
+    }
+    public async trash(req: Request, res: Response): Promise<void> {
+        const { id } = req.params;
+        await pool.query('UPDATE products SET status = "trash" WHERE ID = ?;', [id]);
+        res.json({ message: "The product was sent to trash" });
     }
 }
 

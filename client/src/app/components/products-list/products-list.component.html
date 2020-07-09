@@ -11,6 +11,8 @@
     </div>
     <div class="card-body">
       <h3 class="">${{product.price}}</h3>
+      <h6 class="text-success" *ngIf="product.status != 'trash'">Activo</h6>
+      <h6 class="text-danger" *ngIf="product.status == 'trash'">Inactivo</h6>
       <!-- <p><i class="fab fa-whatsapp"></i>{{product.whapp}}</p> -->
       <a [routerLink]="['/products/edit', product.id]" class="btn btn-primary btn-block">
         EDITAR PRODUCTO
