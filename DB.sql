@@ -15,3 +15,5 @@ SET status = "trash",
 
 
 UPDATE products SET status = "trash" WHERE ID = ?;
+
+UPDATE products SET enable = IF(enable=1, 0, 1) WHERE ID = 2;

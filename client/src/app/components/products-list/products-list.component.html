@@ -11,14 +11,14 @@
     </div>
     <div class="card-body">
       <h3 class="">${{product.price}}</h3>
-      <h6 class="text-success" *ngIf="product.status != 'trash'">Activo</h6>
-      <h6 class="text-danger" *ngIf="product.status == 'trash'">Inactivo</h6>
+      <h6 class="text-success" *ngIf="product.enable">Activo</h6>
+      <h6 class="text-danger" *ngIf="!product.enable">Inactivo</h6>
       <!-- <p><i class="fab fa-whatsapp"></i>{{product.whapp}}</p> -->
       <a [routerLink]="['/products/edit', product.id]" class="btn btn-primary btn-block">
         EDITAR PRODUCTO
       </a>
-      <button class="btn btn-danger btn-block" (click)="deleteGame(product.id)">BORRAR PRODUCTO<i class="ml-1 far fa-trash-alt"></i>
-      </button>
+      <button *ngIf="product.enable" class="btn btn-danger btn-block" (click)="deleteGame(product.id)">DESACTIVAR PRODUCTO</button>
+      <button *ngIf="!product.enable" class="btn btn-success btn-block" (click)="deleteGame(product.id)">ACTIVAR PRODUCTO</button>
     </div>
   </div>
 </div>

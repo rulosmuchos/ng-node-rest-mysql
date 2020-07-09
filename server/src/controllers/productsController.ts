@@ -40,12 +40,14 @@ class ProductsController {
 
     public async delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('DELETE FROM products WHERE id = ?', [id]);
+        // await pool.query('DELETE FROM products WHERE id = ?', [id]);
+        await pool.query('UPDATE products SET enable = IF(enable=1, 0, 1) WHERE ID = ?;', [id]);
         res.json({ message: "The product was deleted" });
     }
     public async trash(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('UPDATE products SET status = "trash" WHERE ID = ?;', [id]);
+        // await pool.query('UPDATE products SET status = "trash" WHERE ID = ?;', [id]);
+        await pool.query('UPDATE products SET enable = IF(enable=1, 0, 1) WHERE ID = ?;', [id]);
         res.json({ message: "The product was sent to trash" });
     }
 }
