@@ -1,4 +1,6 @@
 # Avellaneda Compras Product manager web app
+Branch 2.0 - Adding Synch WS
+
 ## ng-node-rest-mysql
 
 ### Prequisites:
