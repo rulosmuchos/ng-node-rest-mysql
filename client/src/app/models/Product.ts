@@ -9,5 +9,6 @@ export interface Product {
     image3?: string,
     price?: string,
     whapp?: string,
+    enable?:string,
     created_at?: Date,
 };
