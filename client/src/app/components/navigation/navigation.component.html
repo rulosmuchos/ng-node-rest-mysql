@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" (click)="onClick($event)">
   <a class="navbar-brand" routerLink="/"><img class="nav-section" src="assets/icon.png" alt="" width="32" height="32">
   </a>        
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation" (click)="isMenuCollapsed = !isMenuCollapsed">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation" >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav nav-section">
+    <ul class="navbar-nav nav-section" *ngIf="authService.loggedIn();">
       <li class="nav-item active">
         <a class="nav-link" routerLink="/products" routerLinkActive="active"><i class="fas fa-tshirt"></i> Productos</a>
       </li>
