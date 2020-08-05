@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 // import { HttpClient } from "@angular/common/http";
 import { HttpClient, HttpHeaders, HttpEventType, HttpEvent } from '@angular/common/http';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';  
+import { CategoriesService } from '../../services/categories.service'
 
 const HttpUploadOptions = {
   headers: new HttpHeaders({ "Content-Type": "multipart/form-data" })
@@ -26,7 +27,8 @@ export class ProductsFormComponent implements OnInit {
     image: '',
     price:'',
     whapp:'',
-    created_at: new Date()
+    created_at: new Date(),
+    category:0
   };
 
   edit: boolean = false;
@@ -37,6 +39,7 @@ export class ProductsFormComponent implements OnInit {
   
 
   constructor(
+    private catService:CategoriesService,
     private productService: ProductService, 
     private router: Router, 
     private activatedRoute: ActivatedRoute, 
@@ -47,8 +50,48 @@ export class ProductsFormComponent implements OnInit {
       config.keyboard = true;  
       config.pauseOnHover = true; 
    }
-
+   catList:any = [{nombre: 'Loading...'}];
+   subcatList:any = [{nombre: 'Loading...'}];
+   changeCountry(count) {
+     this.getSubCategories(count);
+   }
+   getCategories(){
+     this.catList = [{nombre: 'Loading...'}];
+     this.catService.getCategories().subscribe(
+       res => {
+         //console.log(res)
+         var _cl=[];
+         for ( var element in res) {
+           if(res[element].padre == 0){
+             _cl.push(res[element]);
+           }
+         }
+         console.log(_cl);
+         this.catList = _cl;
+         this.getSubCategories(_cl[0].id)
+       },
+       err => console.error(err)
+     );
+   }
+ 
+   getSubCategories(padre:Number=0){
+     this.subcatList = [{nombre: 'Loading...'}];
+     this.catService.getCategories().subscribe(
+       res => {
+         var _ctl=[];
+         for ( var element in res) {
+           if(res[element].padre == padre){
+             _ctl.push(res[element]);
+           }
+         };
+         this.subcatList = _ctl;
+       },
+       err => console.error(err)
+     );
+   }
+   
   ngOnInit() {
+    this.getCategories();
     const params = this.activatedRoute.snapshot.params;
     if (params.id) {
       this.productService.getProduct(params.id)

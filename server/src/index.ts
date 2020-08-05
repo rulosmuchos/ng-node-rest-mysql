@@ -6,6 +6,8 @@ import indexRoutes from './routes/indexRoutes';
 import productsRoutes from './routes/productsRoutes';
 import usersRoutes from './routes/usersRoutes';
 import uploadRoutes from './routes/uploadRoutes';
+import categoriesRoutes from './routes/categoriesRoutes';
+ './routes/categoriesRoutes';
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
@@ -45,6 +47,7 @@ class Server {
         this.app.use('/api/products', productsRoutes);
         this.app.use('/api/users', usersRoutes);
         this.app.use('/upload', uploadRoutes);
+        this.app.use('/api/categories', categoriesRoutes);
         this.app.use('*',express.static('static'));
     }
 
