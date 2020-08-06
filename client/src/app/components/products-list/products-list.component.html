@@ -2,15 +2,16 @@
   <div class="card bg-secondary mb-3">
     <div class="card-header">
       <h4 class=" mt-0 mb-0">{{product.title}}</h4>
-      <h6 class=" mt-0 mb-0">{{product.description == ''?'Descripcion':product.description}}</h6>
+      <h6 class="mt-0 mb-0">{{product.catTitle}}</h6>
     </div>
     <div class="card bg-transparent p-4" style="overflow: hidden; max-height: 250px; width: 100%;border:1px">
       <div class="card">
-        <img style="width: 100%; display: block;" class="card-img-bottom" [src]="product.image">
+        <a [routerLink]="['/products/edit', product.id]"><img style="width: 100%; display: block;" class="card-img-bottom" [src]="product.image"></a>
       </div>
     </div>
     <div class="card-body">
-      <h3 class="">${{product.price}}</h3>
+      <h6 class="mt-0 mb-0">{{product.subcatTitle}} </h6>
+      <h3>${{product.price}}</h3>
       <h6 class="text-success" *ngIf="product.enable">Activo</h6>
       <h6 class="text-danger" *ngIf="!product.enable">Inactivo</h6>
       <!-- <p><i class="fab fa-whatsapp"></i>{{product.whapp}}</p> -->

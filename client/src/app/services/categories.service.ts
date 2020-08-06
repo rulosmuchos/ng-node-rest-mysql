@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 })
 export class CategoriesService {
 
-  API_URI = 'http://app.avellanedacompras.com/api';
+  API_URI = 'https://app.avellanedacompras.com/api';
 
   constructor(private http: HttpClient) { }
   getCategories(){
