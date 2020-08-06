@@ -40,13 +40,13 @@
         <div class="form-group">
           <input type="text" name="Price" [(ngModel)]="product.price" placeholder="Precio" class="form-control" autofocus>
         </div>
-        <div class="mb-2">
-          <select (change)="changeCountry($event.target.value)" [(ngModel)]="product.category" name="category">
+        <div class="form-group">
+          <select class="form-control" (change)="changeCountry($event.target.value)" [(ngModel)]="product.category" name="category">
               <option *ngFor ="let cat of catList" [value]="cat.id">{{cat.nombre}}</option>
           </select>
         </div>
-        <div class="mb-2">
-          <select [(ngModel)]="product.subcategory" name="subcategory">
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="product.subcategory" name="subcategory">
               <option *ngFor ="let subcat of subcatList" [value]="subcat.id">{{subcat.nombre}} </option>
           </select>
         </div>
