@@ -11,5 +11,6 @@ export interface Product {
     whapp?: string,
     enable?:string,
     created_at?: Date,
-    category?: Number
+    category?: Number,
+    subcategory?: Number,
 };

@@ -28,7 +28,8 @@ export class ProductsFormComponent implements OnInit {
     price:'',
     whapp:'',
     created_at: new Date(),
-    category:0
+    category:0,
+    subcategory:0
   };
 
   edit: boolean = false;
@@ -49,55 +50,57 @@ export class ProductsFormComponent implements OnInit {
       config.wrap = true;  
       config.keyboard = true;  
       config.pauseOnHover = true; 
+    }
+    catRes:any = null;
+    catList:any = [{nombre: 'Loading...'}];
+    subcatList:any = [{nombre: 'Loading...'}];
+    changeCountry(count:Number) {
+      console.log( count);
+      // console.log(this.catList);
+      this.getSubCategories();
    }
-   catList:any = [{nombre: 'Loading...'}];
-   subcatList:any = [{nombre: 'Loading...'}];
-   changeCountry(count) {
-     this.getSubCategories(count);
-   }
-   getCategories(){
+  getCategories(){
      this.catList = [{nombre: 'Loading...'}];
-     this.catService.getCategories().subscribe(
-       res => {
-         //console.log(res)
-         var _cl=[];
-         for ( var element in res) {
-           if(res[element].padre == 0){
-             _cl.push(res[element]);
-           }
-         }
-         console.log(_cl);
-         this.catList = _cl;
-         this.getSubCategories(_cl[0].id)
-       },
-       err => console.error(err)
-     );
-   }
- 
-   getSubCategories(padre:Number=0){
+     if (this.catRes == null){
+       this.catService.getCategories().subscribe(
+         res => {
+           this.catRes = res;
+           var _cl=[];
+           for ( var element in this.catRes) {
+             if(this.catRes[element].padre == 0){
+               _cl.push(this.catRes[element]);
+              }
+            }
+            this.catList = _cl;
+            this.getSubCategories();
+          },
+          err => console.error(err)
+        )
+    }
+  }    
+  getSubCategories(){
+    //console.log(this.catRes);
+     var padre = this.product.category;
+     console.log(this.product.category)
      this.subcatList = [{nombre: 'Loading...'}];
-     this.catService.getCategories().subscribe(
-       res => {
-         var _ctl=[];
-         for ( var element in res) {
-           if(res[element].padre == padre){
-             _ctl.push(res[element]);
-           }
-         };
-         this.subcatList = _ctl;
-       },
-       err => console.error(err)
-     );
+     var _ctl=[];
+     for ( var element in this.catRes) {
+       if(this.catRes[element].padre == padre){
+         _ctl.push(this.catRes[element]);
+       }
+     };
+     this.subcatList = _ctl;
    }
    
   ngOnInit() {
-    this.getCategories();
     const params = this.activatedRoute.snapshot.params;
+    
     if (params.id) {
       this.productService.getProduct(params.id)
         .subscribe(
           res => {
             this.product = res;
+            this.getCategories();
             this.edit = true;
           },
           err => console.log(err)
