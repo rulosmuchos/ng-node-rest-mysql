@@ -43,19 +43,20 @@ export class ProductsFormComponent implements OnInit {
     private router: Router, 
     private activatedRoute: ActivatedRoute, 
     private http:HttpClient,  
-    config: NgbCarouselConfig) {  
+    config: NgbCarouselConfig
+    ){  
       config.interval = 5000;  
       config.wrap = true;  
       config.keyboard = true;  
       config.pauseOnHover = true; 
-    }
-    catRes:any = null;
-    catList:any = [{nombre: 'Loading...'}];
-    subcatList:any = [{nombre: 'Loading...'}];
-    changeCountry(count:Number) {
+  }
+  catRes:any = null;
+  catList:any = [{nombre: 'Loading...'}];
+  subcatList:any = [{nombre: 'Loading...'}];
+  changeCountry(count:Number) {
       console.log( count);
       this.getSubCategories();
-   }
+  }
   getCategories(){
      this.catList = [{nombre: 'Loading...'}];
      if (this.catRes == null){
@@ -103,7 +104,7 @@ export class ProductsFormComponent implements OnInit {
         )
     }else{
       this.getCategories();
-      this.edit = true;
+      this.edit = false;
     }
   }
 
