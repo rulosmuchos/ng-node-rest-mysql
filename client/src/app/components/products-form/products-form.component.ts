@@ -1,9 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Product } from 'src/app/models/Product';
-// import { FormData } from "@angular/forms";
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
-// import { HttpClient } from "@angular/common/http";
 import { HttpClient, HttpHeaders, HttpEventType, HttpEvent } from '@angular/common/http';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';  
 import { CategoriesService } from '../../services/categories.service'
@@ -56,7 +54,6 @@ export class ProductsFormComponent implements OnInit {
     subcatList:any = [{nombre: 'Loading...'}];
     changeCountry(count:Number) {
       console.log( count);
-      // console.log(this.catList);
       this.getSubCategories();
    }
   getCategories(){
@@ -72,7 +69,6 @@ export class ProductsFormComponent implements OnInit {
               }
             }
             this.catList = _cl;
-            // console.log(this.product.category, 'Product!')
             if(this.product.category!=0){
               this.getSubCategories();
               }
@@ -82,9 +78,7 @@ export class ProductsFormComponent implements OnInit {
     }
   }    
   getSubCategories(){
-    //console.log(this.catRes);
      var padre = this.product.category;
-     console.log(this.product.category)
      this.subcatList = [{nombre: 'Loading...'}];
      var _ctl=[];
      for ( var element in this.catRes) {
@@ -97,7 +91,6 @@ export class ProductsFormComponent implements OnInit {
    
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
-    
     if (params.id) {
       this.productService.getProduct(params.id)
         .subscribe(
@@ -140,7 +133,6 @@ export class ProductsFormComponent implements OnInit {
   onFileChanged(comp_event) {
     this.selectedFile = comp_event.target.files[0];
     let input = new FormData();
-    // Add your values in here
     input.append('file', this.selectedFile);
     this.http.post('https://app.avellanedacompras.com/upload', input, {
       reportProgress: true,
@@ -155,17 +147,11 @@ export class ProductsFormComponent implements OnInit {
             break;
           case HttpEventType.Response:
             setTimeout(() => {
-              console.log(comp_event);
               this.product[comp_event.target.name] = event.body['filename'];
               this.progress = 0;
             }, 1500);
-  
         }
-      })
-    // this.http.post('http://181.164.195.167:8002/upload', input).subscribe(
-    //   (res) => {
-    //     this.product.image = res['filename'];
-    //   }
-    // );
+      }
+    )
   }
 }
