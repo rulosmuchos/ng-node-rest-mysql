@@ -72,7 +72,10 @@ export class ProductsFormComponent implements OnInit {
               }
             }
             this.catList = _cl;
-            this.getSubCategories();
+            // console.log(this.product.category, 'Product!')
+            if(this.product.category!=0){
+              this.getSubCategories();
+              }
           },
           err => console.error(err)
         )
@@ -105,6 +108,9 @@ export class ProductsFormComponent implements OnInit {
           },
           err => console.log(err)
         )
+    }else{
+      this.getCategories();
+      this.edit = true;
     }
   }
 
