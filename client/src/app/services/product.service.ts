@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  API_URI = 'https://localhost/api';
+  API_URI = 'https://app.avellanedacompras.com/api';
 
   constructor(private http: HttpClient) { }
 

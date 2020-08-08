@@ -50,10 +50,10 @@
               <option *ngFor ="let subcat of subcatList" [value]="subcat.id">{{subcat.nombre}} </option>
           </select>
         </div>
-        <div><p>Talles</p><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'"  name="talles" [(ngModel)]="tallesArray" [placeholder]="'Talles'"></tag-input></div>
-        <div><p>Colores</p><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'" name="colores" [(ngModel)]="coloresArray" [placeholder]="'Colores'"></tag-input></div>
-        <button class="btn btn-block btn-success" (click)="edit ? updateProduct() : saveNewProduct()">Guardar</button>
-        <button class="btn btn-block btn-danger" (click)="deleteProduct(product.id)">Borrar</button>
+        <div class="mb-3"><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'"  name="talles" [(ngModel)]="tallesArray" [secondaryPlaceholder]="'+ Talles'" [placeholder]="'+ Talles'"></tag-input></div>
+        <div class="mb-3"><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'" name="colores" [(ngModel)]="coloresArray" [secondaryPlaceholder]="'+ Colores'" [placeholder]="'+ Colores'"></tag-input></div>
+        <button class="btn btn-block btn-success mb-3" (click)="edit ? updateProduct() : saveNewProduct()">Guardar</button>
+        <button class="btn btn-block btn-danger mb-3" (click)="deleteProduct(product.id)">Borrar</button>
       </form>
     </div>
   </div>
