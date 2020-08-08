@@ -35,7 +35,7 @@
           <input type="text" name="title" [(ngModel)]="product.title" placeholder="Producto" class="form-control" autofocus>
         </div>
         <div class="form-group">
-          <textarea name="description" [(ngModel)]="product.description" rows="2" placeholder="Descripcion" class="form-control"></textarea>
+          <input type="text" name="description" [(ngModel)]="product.description" rows="2" placeholder="# Articulo" class="form-control">
         </div>
         <div class="form-group">
           <input type="text" name="Price" [(ngModel)]="product.price" placeholder="Precio" class="form-control" autofocus>
@@ -50,7 +50,10 @@
               <option *ngFor ="let subcat of subcatList" [value]="subcat.id">{{subcat.nombre}} </option>
           </select>
         </div>
+        <div><p>Talles</p><tag-input [placeholder]="Talles" [modelAsStrings]="true" [theme]="'foundation-theme'"  name="talles" [(ngModel)]="product.talles" [secondaryPlaceholder]="'Talles'"></tag-input></div>
+        <div><p>Colores</p><tag-input [placeholder]="Colores" [modelAsStrings]="true" [theme]="'foundation-theme'" name="colores" [(ngModel)]="product.colores" [secondaryPlaceholder]="'Colores'"></tag-input></div>
         <button class="btn btn-block btn-success" (click)="edit ? updateProduct() : saveNewProduct()">Guardar</button>
+        <button class="btn btn-block btn-danger" (click)="deleteProduct()">Borrar</button>
       </form>
     </div>
   </div>

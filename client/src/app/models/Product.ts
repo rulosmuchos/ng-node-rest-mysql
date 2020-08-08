@@ -13,4 +13,6 @@ export interface Product {
     created_at?: Date,
     category?: Number,
     subcategory?: Number,
+    talles?:string,
+    colores?:string
 };

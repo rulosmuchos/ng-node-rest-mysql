@@ -96,34 +96,49 @@ export class ProductsFormComponent implements OnInit {
       this.productService.getProduct(params.id)
         .subscribe(
           res => {
+            var _res = res;
+            // console.log(_res['talles'].split(','))
+            _res['talles']  = _res['talles'].split(',');
+            _res['colores']  = _res['colores'].split(',');
             this.product = res;
             this.getCategories();
             this.edit = true;
           },
           err => console.log(err)
-        )
-    }else{
-      this.getCategories();
-      this.edit = false;
-    }
-  }
-
+          )
+        }else{
+          this.getCategories();
+          this.edit = false;
+        }
+      }
+      
   saveNewProduct() {
-    delete this.product.created_at;
-    delete this.product.id;
-    this.productService.saveProduct(this.product)
-      .subscribe(
-        res => {
-          console.log(res);
-          this.router.navigate(['/products']);
-        },
-        err => console.error(err)
-      )
+  delete this.product.created_at;
+  delete this.product.id;
+  console.log(this.product.talles);
+  this.product.talles = this.product.talles.toString();
+  this.product.colores = this.product.colores.toString();
+  this.productService.saveProduct(this.product).subscribe(
+    res => {
+      console.log(res);
+      console.log(this.product);
+      this.router.navigate(['/products']);
+    },
+      err => console.error(err)
+    )
   }
-
+        
   updateProduct() {
     delete this.product.created_at;
-    this.productService.updateProduct(this.product.id, this.product)
+    this.productService.updateProduct(this.product.id, this.product).subscribe(
+      res => {
+        this.router.navigate(['/products']);
+      },
+      err => console.error(err)
+    )
+  }
+  deleteProduct(id: string) {
+    this.productService.deleteProduct(this.product.id)
       .subscribe(
         res => {
           this.router.navigate(['/products']);
