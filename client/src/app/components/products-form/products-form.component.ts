@@ -53,10 +53,30 @@ export class ProductsFormComponent implements OnInit {
   catRes:any = null;
   catList:any = [{nombre: 'Loading...'}];
   subcatList:any = [{nombre: 'Loading...'}];
-  changeCountry(count:Number) {
-      console.log( count);
-      this.getSubCategories();
+  tallesArray = [];
+  coloresArray = [];
+  ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    if (params.id) {
+      this.productService.getProduct(params.id)
+        .subscribe(
+          res => {
+            var _res = res;
+            // console.log(_res['talles'].split(','))
+            (_res['talles'] != null)? this.tallesArray  = _res['talles'].split(','):null;
+            (_res['colores']!=null)? this.coloresArray = _res['colores'].split(','):null;
+            this.product = res;
+            this.getCategories();
+            this.edit = true;
+          },
+          err => console.log(err)
+        )
+    }else{
+      this.getCategories();
+      this.edit = false;
+    }
   }
+
   getCategories(){
      this.catList = [{nombre: 'Loading...'}];
      if (this.catRes == null){
@@ -79,57 +99,35 @@ export class ProductsFormComponent implements OnInit {
     }
   }    
   getSubCategories(){
-     var padre = this.product.category;
-     this.subcatList = [{nombre: 'Loading...'}];
-     var _ctl=[];
-     for ( var element in this.catRes) {
-       if(this.catRes[element].padre == padre){
-         _ctl.push(this.catRes[element]);
-       }
-     };
-     this.subcatList = _ctl;
-   }
-   
-  ngOnInit() {
-    const params = this.activatedRoute.snapshot.params;
-    if (params.id) {
-      this.productService.getProduct(params.id)
-        .subscribe(
-          res => {
-            var _res = res;
-            // console.log(_res['talles'].split(','))
-            _res['talles']  = _res['talles'].split(',');
-            _res['colores']  = _res['colores'].split(',');
-            this.product = res;
-            this.getCategories();
-            this.edit = true;
-          },
-          err => console.log(err)
-          )
-        }else{
-          this.getCategories();
-          this.edit = false;
-        }
+    var padre = this.product.category;
+    this.subcatList = [{nombre: 'Loading...'}];
+    var _ctl=[];
+    for ( var element in this.catRes) {
+      if(this.catRes[element].padre == padre){
+        _ctl.push(this.catRes[element]);
       }
-      
-  saveNewProduct() {
-  delete this.product.created_at;
-  delete this.product.id;
-  console.log(this.product.talles);
-  this.product.talles = this.product.talles.toString();
-  this.product.colores = this.product.colores.toString();
-  this.productService.saveProduct(this.product).subscribe(
-    res => {
-      console.log(res);
-      console.log(this.product);
-      this.router.navigate(['/products']);
-    },
-      err => console.error(err)
-    )
+    };
+    this.subcatList = _ctl;
   }
-        
+  saveNewProduct() {
+    delete this.product.created_at;
+    delete this.product.id;
+    this.product.talles = this.tallesArray.toString();
+    this.product.colores = this.coloresArray.toString();
+    this.productService.saveProduct(this.product).subscribe(
+      res => {
+        console.log(res);
+        console.log(this.product);
+        this.router.navigate(['/products']);
+      },
+      err => console.error(err)
+     )
+  }
+    
   updateProduct() {
     delete this.product.created_at;
+    this.product.talles = this.tallesArray.toString();
+    this.product.colores = this.coloresArray.toString();
     this.productService.updateProduct(this.product.id, this.product).subscribe(
       res => {
         this.router.navigate(['/products']);
@@ -137,14 +135,14 @@ export class ProductsFormComponent implements OnInit {
       err => console.error(err)
     )
   }
-  deleteProduct(id: string) {
+  deleteProduct(id: number) {
     this.productService.deleteProduct(this.product.id)
-      .subscribe(
-        res => {
-          this.router.navigate(['/products']);
-        },
-        err => console.error(err)
-      )
+    .subscribe(
+      res => {
+        this.router.navigate(['/products']);
+      },
+      err => console.error(err)
+    )
   }
   onFileChanged(comp_event) {
     this.selectedFile = comp_event.target.files[0];
@@ -162,12 +160,17 @@ export class ProductsFormComponent implements OnInit {
             this.progress = Math.round(event.loaded / event.total * 100);
             break;
           case HttpEventType.Response:
-            setTimeout(() => {
-              this.product[comp_event.target.name] = event.body['filename'];
-              this.progress = 0;
-            }, 1500);
+              setTimeout(() => {
+                this.product[comp_event.target.name] = event.body['filename'];
+                this.progress = 0;
+              }, 1500);
         }
       }
     )
   }
-}
+  onCatChanged(count:Number) {
+    console.log( count);
+    this.getSubCategories();
+    }
+  }
+                

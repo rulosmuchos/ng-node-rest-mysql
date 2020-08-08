@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-  API_URI = 'https://app.avellanedacompras.com/api';
+  API_URI = 'https://localhost/api';
 
   constructor(private http: HttpClient) { }
 
@@ -20,10 +20,13 @@ export class ProductService {
     return this.http.get(`${this.API_URI}/products/${id}`);
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id: number) {
+    console.log(id);
     return this.http.delete(`${this.API_URI}/products/${id}`);
   }
-
+  enableProduct(product:Product) {
+    return this.http.put(`${this.API_URI}/products/${product.id}`, product);
+  }
   saveProduct(product: Product) {
     return this.http.post(`${this.API_URI}/products`, product);
   }

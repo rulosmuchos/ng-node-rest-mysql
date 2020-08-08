@@ -41,7 +41,7 @@
           <input type="text" name="Price" [(ngModel)]="product.price" placeholder="Precio" class="form-control" autofocus>
         </div>
         <div class="form-group">
-          <select class="form-control" (change)="changeCountry($event.target.value)" [(ngModel)]="product.category" name="category">
+          <select class="form-control" (change)="onCatChanged($event.target.value)" [(ngModel)]="product.category" name="category">
               <option *ngFor ="let cat of catList" [value]="cat.id">{{cat.nombre}}</option>
           </select>
         </div>
@@ -50,10 +50,10 @@
               <option *ngFor ="let subcat of subcatList" [value]="subcat.id">{{subcat.nombre}} </option>
           </select>
         </div>
-        <div><p>Talles</p><tag-input [placeholder]="Talles" [modelAsStrings]="true" [theme]="'foundation-theme'"  name="talles" [(ngModel)]="product.talles" [secondaryPlaceholder]="'Talles'"></tag-input></div>
-        <div><p>Colores</p><tag-input [placeholder]="Colores" [modelAsStrings]="true" [theme]="'foundation-theme'" name="colores" [(ngModel)]="product.colores" [secondaryPlaceholder]="'Colores'"></tag-input></div>
+        <div><p>Talles</p><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'"  name="talles" [(ngModel)]="tallesArray" [placeholder]="'Talles'"></tag-input></div>
+        <div><p>Colores</p><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'" name="colores" [(ngModel)]="coloresArray" [placeholder]="'Colores'"></tag-input></div>
         <button class="btn btn-block btn-success" (click)="edit ? updateProduct() : saveNewProduct()">Guardar</button>
-        <button class="btn btn-block btn-danger" (click)="deleteProduct()">Borrar</button>
+        <button class="btn btn-block btn-danger" (click)="deleteProduct(product.id)">Borrar</button>
       </form>
     </div>
   </div>
