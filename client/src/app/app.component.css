@@ -1,0 +1,12 @@
+.container {
+    margin-top: 160px;
+    padding: 15px 90px;
+}
+.footer-copyright{
+    height: 20px;
+}
+.footer{
+    background: rgba(194, 132, 180, 0.726);
+    backdrop-filter: blur(10px);
+
+}

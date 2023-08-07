@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    /* background: #ffa4a4; */
+    background: rgb(225,206,221);
+}
+
+.form-signin {
+    min-width: 400px;
+    display: inline-block;
+}
+.nav-section{
+    /* margin-left: 15px;
+    margin-right: 15px; */
+    
+}
+.main-logo{
+   
+}
+.main-logo img{
+    width: 80px;
+    height: 80px;
+    border: 2px solid white;
+}
+.nav-item i{
+    margin-right: 7px !important;
+}
+.bg-dark{
+    background-color: #372142a1 !important;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    backdrop-filter: blur(10px);
+}
+.bg-secondary{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+/*    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px;*/
+}
+.image-gallery-item{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+/*    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px;*/
+}
+.maintitle{
+    margin-top: 30px;
+}

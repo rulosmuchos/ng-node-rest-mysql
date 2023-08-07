@@ -1,0 +1,3 @@
+client/src/app/services/product.service.ts
+server/src/index.ts
+server/src/keys.ts

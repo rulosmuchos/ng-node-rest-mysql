@@ -1,0 +1,60 @@
+<div class=container>
+  <div class="row text-center pb-3">  
+    <div class="col">
+      <div class="card">
+        <input style="display: none;" type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" id="image" name="image" #fileInput>
+        <img class="w-100 image-gallery-item" alt="/assets/noimage.png" [src]="!product.image ? '/assets/noimage.png' : product.image" name="image" (click)="fileInput.click()">
+      </div>  
+    </div>  
+    <div class="col">
+      <div class="card">
+        <input style="display: none;" type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" id="image2" name="image2" #fileInput2>  
+        <img class="w-100 image-gallery-item" alt="/assets/noimage.png" [src]="! product.image2 ? '/assets/noimage.png' : product.image2" name="image2" (click)="fileInput2.click()">
+      </div>  
+    </div>  
+    <div class="col">
+      <div class="card">  
+        <input style="display: none;" type="file" class="custom-file-input" id="customFile" (change)="onFileChanged($event)" id="image3" name="image3" #fileInput3>  
+        <img class="w-100 image-gallery-item" alt="/assets/noimage.png" [src]="!product.image3 ? '/assets/noimage.png' : product.image3" name="image3" (click)="fileInput3.click()">
+      </div>  
+    </div>  
+  </div>  
+</div>
+<div class="col-12 row-5">
+  <div class="card  bg-secondary mb-3">    
+    <div class="card-header">
+      <h4 class=" mt-0 mb-0">AGREGAR PRODUCTO</h4>
+    </div>
+    <div class="card-body">
+      <form action="">
+        <div class="form-group">
+          <!-- Progress Bar -->
+          <div class="pb-3" *ngIf="progress>0"> 
+            <ngb-progressbar class="progress-bar-striped" type="primary" [animated]="true" [striped]="true"  [value]="progress"></ngb-progressbar>
+          </div>
+          <input type="text" name="title" [(ngModel)]="product.title" placeholder="Producto" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="text" name="description" [(ngModel)]="product.description" rows="2" placeholder="# Articulo" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="Price" [(ngModel)]="product.price" placeholder="Precio" class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+          <select class="form-control" (change)="onCatChanged($event.target.value)" [(ngModel)]="product.category" name="category">
+              <option *ngFor ="let cat of catList" [value]="cat.id">{{cat.nombre}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control" [(ngModel)]="product.subcategory" name="subcategory">
+              <option *ngFor ="let subcat of subcatList" [value]="subcat.id">{{subcat.nombre}} </option>
+          </select>
+        </div>
+        <div class="mb-3"><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'"  name="talles" [(ngModel)]="this.tallesArray" [secondaryPlaceholder]="'+ Talles'" [placeholder]="'+ Talles'"></tag-input></div>
+        <div class="mb-3"><tag-input  [modelAsStrings]="true" [theme]="'foundation-theme'" name="colores" [(ngModel)]="this.coloresArray" [secondaryPlaceholder]="'+ Colores'" [placeholder]="'+ Colores'"></tag-input></div>
+        <button class="btn btn-block btn-success mb-3" (click)="edit ? updateProduct() : saveNewProduct()">Guardar</button>
+        <button class="btn btn-block btn-danger mb-3" (click)="deleteProduct(product.id)">Borrar</button>
+      </form>
+    </div>
+  </div>
+</div>

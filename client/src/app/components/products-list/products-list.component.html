@@ -1,0 +1,25 @@
+<div class="album col-md-4" *ngFor="let product of products">
+  <div class="card bg-secondary mb-3">
+    <div class="card-header">
+      <h4 class=" mt-0 mb-0">{{product.title}}</h4>
+      <h6 class="mt-0 mb-0">{{getCatTitle(product.category)}}</h6>
+    </div>
+    <div class="card bg-transparent p-4" style="overflow: hidden; max-height: 250px; width: 100%;border:1px">
+      <div class="card">
+        <a [routerLink]="['/products/edit', product.id]"><img style="width: 100%; display: block;" class="card-img-bottom" [src]="product.image"></a>
+      </div>
+    </div>
+    <div class="card-body">
+      <h6 class="mt-0 mb-0">{{getCatTitle(product.subcategory)}} </h6>
+      <h3>${{product.price}}</h3>
+      <h6 class="text-success" *ngIf="product.enable">Activo</h6>
+      <h6 class="text-danger" *ngIf="!product.enable">Inactivo</h6>
+      <!-- <p><i class="fab fa-whatsapp"></i>{{product.whapp}}</p> -->
+      <a [routerLink]="['/products/edit', product.id]" class="btn btn-primary btn-block">
+        EDITAR PRODUCTO
+      </a>
+      <button *ngIf="product.enable" class="btn btn-danger btn-block" (click)="disableProduct(product)">DESACTIVAR PRODUCTO</button>
+      <button *ngIf="!product.enable" class="btn btn-success btn-block" (click)="enableProduct(product)">ACTIVAR PRODUCTO</button>
+    </div>
+  </div>
+</div>

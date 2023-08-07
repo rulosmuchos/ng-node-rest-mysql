@@ -1,0 +1,103 @@
+@import "~node_modules/ngx-chips/core/styles/core/_core.scss";
+
+$foundation-primary: #f7f7f9;
+$foundation-primary-dark: darken($foundation-primary, 10%);
+//
+@mixin tag-input-theme($theme) {
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    background: #f7f7f9;
+    transition: map-get($theme, transition);
+
+    padding: map-get($theme, 'container-padding');
+    min-height: map-get($theme, 'container-height');
+
+    cursor: text;
+
+    border-bottom: map-get($theme, 'container-border-bottom');
+    box-shadow: map-get($theme, 'box-shadow');
+    border-radius: map-get($theme, 'border-radius');
+    
+    &:focus {
+        outline: 0;
+    }
+
+    &.ng2-tag-input--dropping {
+        opacity: 0.7;
+    }
+
+    &.ng2-tag-input--focused {
+        border-bottom: map-get($theme, 'container-border-bottom-focused');
+    }
+
+    &.ng2-tag-input--invalid {
+        border-bottom: map-get($theme, 'container-border-bottom-invalid');
+    }
+
+    &.ng2-tag-input--loading {
+        border: none;
+    }
+
+    &.ng2-tag-input--disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    form {
+        margin: map-get($theme, 'container-margin');
+    }
+
+    .ng2-tags-container {
+        flex-wrap: wrap;
+        display: flex;
+    }
+}
+// this is the container's theme
+$foundation-theme: (
+    container-border-bottom: 1px solid rgb(184, 184, 184),
+    container-border-bottom-focused: 1px solid #f54d4d
+
+);
+$foundation-input-theme:(
+    background:#f7f7f9
+);
+
+// this is the tag's theme
+$foundation-tag-theme: (
+    background-focused: $foundation-primary-dark,
+    background-active: $foundation-primary-dark,
+    background-hover: #ffa4a4,
+    background: #f54d4d,
+    color:#fff,
+    color-hover:#fff,
+    border-radius: 2px
+);
+
+// this is the delete icon's theme
+$foundation-icon-theme: (
+    fill: #fff,
+    fill-focus: #ffa4a4,
+    transition: all 0.35s
+);
+
+// apply theme to the container
+::ng-deep tag-input .ng2-tag-input.foundation-theme {
+    @include tag-input-theme($foundation-theme);
+}
+
+// apply theme to the tags
+::ng-deep tag-input .ng2-tag-input.foundation-theme tag {
+    @include tag-theme($foundation-tag-theme);
+}
+
+// apply theme to the input text field
+::ng-deep tag-input .ng2-tag-input.foundation-theme input {
+    @include tag-theme($foundation-input-theme);
+}
+
+// apply theme to the delete icon
+::ng-deep tag-input .ng2-tag-input.foundation-theme tag delete-icon {
+    @include icon-theme($foundation-icon-theme);
+}
